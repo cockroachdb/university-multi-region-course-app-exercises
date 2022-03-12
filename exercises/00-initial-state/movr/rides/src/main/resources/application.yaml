@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://host.docker.internal:26257/movr_rides
+    url: jdbc:postgresql://localhost:26257/movr_rides
     username: demo
     password: movr
 
