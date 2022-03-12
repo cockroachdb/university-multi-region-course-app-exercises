@@ -7,4 +7,4 @@ CREATE TABLE movr_users.users (
 	phone_numbers STRING[] NOT NULL
 );
 
-ALTER DATABASE movr_users SET PRIMARY REGION "us-east1";
+ALTER DATABASE movr_users SET PRIMARY REGION "us-east";

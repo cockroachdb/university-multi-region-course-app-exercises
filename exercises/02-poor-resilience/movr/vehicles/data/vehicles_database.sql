@@ -33,4 +33,4 @@ INSERT INTO movr_vehicles.location_history (id, vehicle_id, ts, longitude, latit
 	('002cf0db-64cd-4c93-b728-004c5b5723ef', '541f7135-41b6-484b-b201-ddb20ed25d47', '2020-04-29 20:23:31+00:00', (-74.28585), 40.54546),
 	('003813dc-1f95-46b5-b4c8-efb0ba016a3f', 'c7092d4f-228d-4570-aa64-576574e7f2ee', '2020-04-30 03:23:09+00:00', (-74.48876), 40.66873);
 
-ALTER DATABASE movr_vehicles SET PRIMARY REGION "us-east1";
+ALTER DATABASE movr_vehicles SET PRIMARY REGION "us-east";

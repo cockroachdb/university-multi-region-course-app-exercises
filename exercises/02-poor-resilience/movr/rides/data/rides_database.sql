@@ -15,4 +15,4 @@ CREATE TABLE movr_rides.events (
     event_data JSON NOT NULL
 );
 
-ALTER DATABASE movr_rides SET PRIMARY REGION "us-east1";
+ALTER DATABASE movr_rides SET PRIMARY REGION "us-east";
