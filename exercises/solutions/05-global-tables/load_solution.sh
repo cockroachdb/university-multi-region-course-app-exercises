@@ -25,7 +25,7 @@ SUB_FOLDERS=(
     "movr/vehicles/"
     "movr/users/"
     "movr/ui_gateway/"
-    "movr/pricing/"
+    "movr/pricing"
 )
 
 SOLUTION_FOLDER=../solutions

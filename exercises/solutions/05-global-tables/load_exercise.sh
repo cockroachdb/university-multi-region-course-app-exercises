@@ -4,12 +4,12 @@ set -euo pipefail
 IFS=$'\n\t'
 
 function help {
-    echo "This command will copy the provided solutions into your exercises directory."
+    echo "This command will copy the provided tests into your exercises directory."
     echo ""
-    echo "USAGE: load_solution.sh <search string>"
+    echo "USAGE: load_exercise.sh <search string>"
     echo ""
     echo "<search string>   A string that makes up all, or part, of the exercise name. Exercise numbers (eg. 01) are the simplest form of search."
-    echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR CODE. MAKE SURE YOU ACTUALLY WANT TO DO THAT."
+    echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR TESTS. IF YOU HAVE MADE CHANGES TO THE TESTS, YOU WILL LOSE THEM."
 }
 
 EXERCISE=${1:-}
@@ -21,11 +21,10 @@ then
 fi
 
 SUB_FOLDERS=(
-    "movr/rides/"
-    "movr/vehicles/"
-    "movr/users/"
-    "movr/ui_gateway/"
-    "movr/pricing/"
+    "movr/rides/src/test"
+    "movr/vehicles/src/test"
+    "movr/users/src/test"
+    "movr/ui_gateway/src/test"
 )
 
 SOLUTION_FOLDER=../solutions
@@ -44,7 +43,7 @@ do
     SOLUTION=$EXERCISE_FOLDER/$folder
     EXERCISE=./$folder
     
-    echo "Pulling Solution from $SOLUTION to $EXERCISE"
+    echo "Loading Tests from $SOLUTION to $EXERCISE"
 
     if [ ! -d $SOLUTION ]
     then
@@ -53,5 +52,5 @@ do
   
     rm -rf $EXERCISE
     mkdir $EXERCISE
-    cp -rp $SOLUTION/. $EXERCISE/
+    cp -rp $SOLUTION/* $EXERCISE
 done
