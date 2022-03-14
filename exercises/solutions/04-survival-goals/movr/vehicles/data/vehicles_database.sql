@@ -7,7 +7,7 @@ CREATE TABLE movr_vehicles.vehicles (
     last_ride_end TIMESTAMP,
     vehicle_info JSON,
     serial_number INT
-        AS ((vehicle_info->'purchase_information'->>'serial_number' )::INT8)
+        AS ((vehicle_info->'purchase_information'->>'serial_number')::INT8)
         STORED
 );
 
