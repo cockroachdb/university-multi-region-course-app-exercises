@@ -4,14 +4,14 @@ server:
 spring:
   kafka:
     consumer:
-      bootstrap-servers: kafka:9092
+      bootstrap-servers: localhost:9092
       group-id: vehicles
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties.spring.json.value.default.type: io.roach.movrapi.events.KafkaMessage
   datasource:
-    url: jdbc:postgresql://host.docker.internal:26257/movr_vehicles
+    url: jdbc:postgresql://localhost:26257/movr_vehicles
     username: demo
     password: movr
 
