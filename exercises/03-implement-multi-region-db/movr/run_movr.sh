@@ -25,9 +25,9 @@ function package_service_jars {
     # Each service jar will be built separately
     for service in "${MICROSERVICES[@]}"
     do
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        echo CREATING JAR FOR $service
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo "CREATING JAR FOR $service"
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         cd $service
          ../../../mvnw clean package -DskipTests spring-boot:repackage 
         cd $WORKING
@@ -46,9 +46,9 @@ function stop_kafka {
 function start_services {
      local WORKING=$(pwd)
 
-    echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    echo STARTING Kafka
-    echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo "STARTING Kafka"
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
     start_kafka
 
@@ -59,9 +59,9 @@ function start_services {
     # Each service jar will be built separately
     for service in "${MICROSERVICES[@]}"
     do
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        echo STARTING $service
-        echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo "STARTING $service"
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         cd $service
             java -jar target/movr-$service-api-0.0.1-SNAPSHOT.jar > /dev/null &
             echo "$!" >> ../running_services.txt
@@ -85,6 +85,8 @@ if [ "$COMMAND" = "start" ]; then
     start_services
 elif [ "$COMMAND" = "stop" ]; then
     stop_services
+elif [ "$COMMAND" = "help"]; then
+    help
 else
     echo "INVALID COMMAND: $COMMAND"
     help
