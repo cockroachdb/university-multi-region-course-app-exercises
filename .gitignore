@@ -210,3 +210,7 @@ buildNumber.properties
 
 ### CockroachDB ###
 inflight_trace_dump
+cockroach.listen
+
+### Microservice Running File ###
+running_services.txt
