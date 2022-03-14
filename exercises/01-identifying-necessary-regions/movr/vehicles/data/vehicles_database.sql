@@ -2,10 +2,10 @@ CREATE DATABASE movr_vehicles;
 
 CREATE TABLE movr_vehicles.vehicles (
     id UUID PRIMARY KEY,
-    battery INT8,
-    last_ride_start TIMESTAMP,
-    last_ride_end TIMESTAMP,
-    vehicle_info JSON,
+    battery INT8 NULL,
+    last_ride_start TIMESTAMP NULL,
+    last_ride_end TIMESTAMP NULL,
+    vehicle_info JSON NULL,
     serial_number INT
         AS ((vehicle_info->'purchase_information'->>'serial_number')::INT8)
         STORED
