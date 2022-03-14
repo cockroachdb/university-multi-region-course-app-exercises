@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.roach</groupId>
-    <artifactId>movr-vehicle-api</artifactId>
+    <artifactId>movr-vehicles-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>movr-vehicle-api</name>
+    <name>movr-vehicles-api</name>
     <description>Java api for CockroachDB Vehicle Sharing App Example</description>
 
     <properties>

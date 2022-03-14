@@ -10,17 +10,17 @@ logging:
     org.springframework.web: INFO
 
 auth-service:
-  host: host.docker.internal
+  host: localhost
   port: 36260
 
 user-service:
-  host: users
+  host: localhost
   port: 36260
 
 vehicle-service:
-  host: vehicles
+  host: localhost
   port: 36258
 
 rides-service:
-  host: rides
+  host: localhost
   port: 36259
