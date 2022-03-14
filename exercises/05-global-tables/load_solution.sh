@@ -12,12 +12,12 @@ function help {
     echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR CODE. MAKE SURE YOU ACTUALLY WANT TO DO THAT."
 }
 
-EXERCISE=${1:-}
-
-if [ -z $EXERCISE ]
+if [ -z $1 ]
 then
-    help
-    exit 0
+  help
+  exit 0
+else
+  EXERCISE=$1
 fi
 
 SUB_FOLDERS=(
@@ -25,6 +25,7 @@ SUB_FOLDERS=(
     "movr/vehicles/"
     "movr/users/"
     "movr/ui_gateway/"
+    "movr/pricing/"
 )
 
 SOLUTION_FOLDER=../solutions

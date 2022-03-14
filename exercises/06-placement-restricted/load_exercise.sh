@@ -12,12 +12,12 @@ function help {
     echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR TESTS. IF YOU HAVE MADE CHANGES TO THE TESTS, YOU WILL LOSE THEM."
 }
 
-EXERCISE=${1:-}
-
-if [ -z $EXERCISE ]
+if [ -z $1 ]
 then
-    help
-    exit 0
+  help
+  exit 0
+else
+  EXERCISE=$1
 fi
 
 SUB_FOLDERS=(
