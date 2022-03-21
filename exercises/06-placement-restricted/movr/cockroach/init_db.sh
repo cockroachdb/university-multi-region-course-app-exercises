@@ -42,3 +42,9 @@ echo "----------------------------------------------------------------------"
 echo "UPDATING DEMO PASSWORD (movr) "
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --execute 'ALTER USER demo with password "movr";'
+
+echo "----------------------------------------------------------------------"
+echo "UPDATING CLUSTER TO SUPPORT PLACEMENT RESTRICTED "
+echo "----------------------------------------------------------------------"
+cockroach sql --url $URL --execute 'SET enable_multiregion_placement_policy = on;'
+
