@@ -75,11 +75,9 @@ function load_solution {
 }
 
 if [ "$COMMAND" = "stage" ]; then
-    #start_services
-    echo "loading exercise $SELECTED_EXERCISE"
+    echo "staging exercise $SELECTED_EXERCISE"
     load_exercise
 elif [ "$COMMAND" = "solve" ]; then
-    #stop_services
     echo "loading solution $SELECTED_EXERCISE"
     load_solution
 elif [ "$COMMAND" = "help"]; then
