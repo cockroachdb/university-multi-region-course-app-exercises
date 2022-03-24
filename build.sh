@@ -67,7 +67,11 @@ function clean {
 
 # Determine which command is being requested, and execute it.
 if [ "$COMMAND" = "verify" ]; then
-    verify_all_exercises
+    # verify_all_exercises
+    # this tests the movr application but not the SQL exercises
+    # this needs another look for testing the SQL exercises 
+    # as many are multi-region settings and not standard SQL to test
+    run_all_tests
 elif [ "$COMMAND" = "clean" ]; then
     clean
 elif [ "$COMMAND" = "help" ]; then
