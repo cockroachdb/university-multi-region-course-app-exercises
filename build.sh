@@ -50,7 +50,7 @@ function run_all_tests {
         echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         echo RUNNING TESTS FOR $service
         echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        cd $service
+        cd $EXERCISE_FOLDER/$service
         ./mvnw clean test
         cd $WORKING
     done
