@@ -29,7 +29,7 @@ function package_service_jars {
         echo "CREATING JAR FOR $service"
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         cd $service
-         ../../../mvnw clean package -DskipTests spring-boot:repackage 
+         ../../mvnw clean package -DskipTests spring-boot:repackage 
         cd $WORKING
     done
 }
