@@ -36,6 +36,10 @@ CURRENT_EXERCISE_FOLDER=$(find . -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*
 
 function load_exercise {
     PREVIOUS_EXERCISE=$(($SELECTED_EXERCISE-1))
+    if (("$PREVIOUS_EXERCISE" < "1"))
+    then 
+        PREVIOUS_EXERCISE="00"
+    fi
     PREVIOUS_EXERCISE_FOLDER=$(find . -maxdepth 1 -type d -name "*$PREVIOUS_EXERCISE*" -print -quit)
 
     if [ -z $PREVIOUS_EXERCISE_FOLDER ]
