@@ -2,9 +2,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-COURSE_ID="my_course"
+COURSE_ID="multi_region"
 EXERCISE_FOLDER="exercises"
-EXERCISES=($(ls $EXERCISE_FOLDER | grep '^[0-9]'))
+# public structured repo does not include these build folders
+# EXERCISES=($(ls $EXERCISE_FOLDER | grep '^[0-9]'))
 MICROSERVICES=("movr/rides" "movr/users" "movr/vehicles" "movr/ui_gateway")
 COMMAND=${1:-"help"}
 
@@ -71,9 +72,9 @@ if [ "$COMMAND" = "verify" ]; then
     # this tests the movr application but not the SQL exercises
     # this needs another look for testing the SQL exercises 
     # as many are multi-region settings and not standard SQL to test
-    run_all_tests
+    echo "this course does not have unit tests to run"
 elif [ "$COMMAND" = "clean" ]; then
-    clean
+    echo "requested clean cycle"
 elif [ "$COMMAND" = "help" ]; then
     help
 else

@@ -13,5 +13,4 @@ CREATE TABLE movr_rides.events (
     ts TIMESTAMP DEFAULT now() NOT NULL,
     event_type STRING NOT NULL,
     event_data JSON NOT NULL
-ALTER DATABASE movr_rides SET PRIMARY REGION "us-east";
 );

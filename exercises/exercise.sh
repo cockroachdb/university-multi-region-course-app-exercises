@@ -26,52 +26,50 @@ else
   SELECTED_EXERCISE=$2
 fi
 
+# if you try to load exercise 0 without this, exercise 6 is loaded instead
+if (("$SELECTED_EXERCISE" < "1"))
+    then 
+        SELECTED_EXERCISE="00"
+fi
+
 EXERCISE_CODE=(
+    "movr/cockroach"
     "movr/rides/data"
     "movr/users/data"
     "movr/vehicles/data"
+    "movr/pricing/data"
 )
 
 CURRENT_EXERCISE_FOLDER=$(find . -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*" -print -quit)
 
 function load_exercise {
-    PREVIOUS_EXERCISE=$(($SELECTED_EXERCISE-1))
-    if (("$PREVIOUS_EXERCISE" < "1"))
-    then 
-        PREVIOUS_EXERCISE="00"
-    fi
-    PREVIOUS_EXERCISE_FOLDER=$(find . -maxdepth 1 -type d -name "*$PREVIOUS_EXERCISE*" -print -quit)
+    echo "this course does not have unit tests to load"
+}
 
-    if [ -z $PREVIOUS_EXERCISE_FOLDER ]
-    then
-        echo "Unable to find the requested exercise: $PREVIOUS_EXERCISE"
-        help
-        exit 0
-    fi
+# cockroach ./run.sh script can change between exercises and should be loaded prior to starting the exercise
+function stage_exercise {
+    COCKROACH_FOLDER="movr/cockroach"
+    SOLUTION_FOLDER=../solutions
+    EXERCISE_FOLDER=$(find $SOLUTION_FOLDER -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*" -print -quit)
 
-    for folder in ${EXERCISE_CODE[@]};
-    do
-        PREVIOUS_EXERCISE_CODE=$PREVIOUS_EXERCISE_FOLDER/$folder
-        CURRENT_EXERCISE_CODE=$CURRENT_EXERCISE_FOLDER/$folder
-        echo "Copying your code from $PREVIOUS_EXERCISE_CODE to current exercise: $CURRENT_EXERCISE_CODE"
-        cp -rf $PREVIOUS_EXERCISE_CODE/* $CURRENT_EXERCISE_CODE
-    done
+    echo "Initializing cockroach folder from $EXERCISE_FOLDER"
+    cp -rf $EXERCISE_FOLDER/$COCKROACH_FOLDER/* ./$COCKROACH_FOLDER
 }
 
 function load_solution {
-    SOLUTION_FOLDER=solutions
+    SOLUTION_FOLDER=../solutions
     EXERCISE_FOLDER=$(find $SOLUTION_FOLDER -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*" -print -quit)
 
     for folder in ${EXERCISE_CODE[@]};
     do
         SOLUTION=$EXERCISE_FOLDER/$folder
-        EXERCISE=$CURRENT_EXERCISE_FOLDER/$folder
+        EXERCISE=./$folder
         
         echo "Pulling Solution from $SOLUTION to $EXERCISE"
 
         if [ ! -d $SOLUTION ]
         then
-            echo "WARNING: Unable to find tests for in the requested folder: $SOLUTION...skipping"
+            echo "WARNING: Unable to find a solution in the requested folder: $SOLUTION...skipping"
         fi
     
         cp -rf $SOLUTION/* $EXERCISE
@@ -80,7 +78,7 @@ function load_solution {
 
 if [ "$COMMAND" = "stage" ]; then
     echo "staging exercise $SELECTED_EXERCISE"
-    load_exercise
+    stage_exercise
 elif [ "$COMMAND" = "solve" ]; then
     echo "loading solution $SELECTED_EXERCISE"
     load_solution
