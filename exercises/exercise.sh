@@ -42,12 +42,9 @@ EXERCISE_CODE=(
 
 CURRENT_EXERCISE_FOLDER=$(find . -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*" -print -quit)
 
-function load_exercise {
-    echo "this course does not have unit tests to load"
-}
 
 # cockroach ./run.sh script can change between exercises and should be loaded prior to starting the exercise
-function stage_exercise {
+function load_exercise {
     COCKROACH_FOLDER="movr/cockroach"
     SOLUTION_FOLDER=../solutions
     EXERCISE_FOLDER=$(find $SOLUTION_FOLDER -maxdepth 1 -type d -name "*$SELECTED_EXERCISE*" -print -quit)
@@ -76,9 +73,9 @@ function load_solution {
     done
 }
 
-if [ "$COMMAND" = "stage" ]; then
-    echo "staging exercise $SELECTED_EXERCISE"
-    stage_exercise
+if [ "$COMMAND" = "load" ]; then
+    echo "load exercise $SELECTED_EXERCISE"
+    load_exercise
 elif [ "$COMMAND" = "solve" ]; then
     echo "loading solution $SELECTED_EXERCISE"
     load_solution
