@@ -35,12 +35,11 @@ function package_service_jars {
 }
 
 function start_kafka {
-    docker-compose start kafka
+    docker-compose up
 }
 
 function stop_kafka {
-    docker-compose stop kafka
-    docker-compose stop zookeeper
+    docker-compose down
 }
 
 function start_services {
