@@ -23,32 +23,3 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-  vehicles:
-    image: docker.io/library/movr-vehicle-api:0.0.1-SNAPSHOT
-    container_name: vehicles
-    links:
-      - kafka
-      - zookeeper
-    ports:
-      - 36258:36258
-    environment:
-      BOOTSTRAP_SERVERS: kafka:9092
-  ui_gateway:
-    image: docker.io/library/movr-api:0.0.1-SNAPSHOT
-    container_name: ui_gateway
-    links:
-      - vehicles
-      - rides
-      - users
-    ports:
-      - 36257:36257
-  rides:
-   image: docker.io/library/movr-rides-api:0.0.1-SNAPSHOT
-   container_name: rides
-   ports:
-     - 36259:36259
-  users:
-    image: docker.io/library/movr-user-api:0.0.1-SNAPSHOT
-    container_name: users
-    ports:
-      - 36260:36260
