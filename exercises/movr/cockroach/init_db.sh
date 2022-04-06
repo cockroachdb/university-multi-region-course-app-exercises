@@ -47,5 +47,3 @@ echo "----------------------------------------------------------------------"
 echo "UPDATING DEMO PASSWORD (movr) "
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --execute 'ALTER USER demo with password "movr";'
-
-
