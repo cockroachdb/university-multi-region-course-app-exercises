@@ -37,11 +37,16 @@ echo "----------------------------------------------------------------------"
 echo "INITIALIZING USERS DATABASE: ../users/data/users_database.sql"
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --file '../users/data/users_database.sql'
+echo "----------------------------------------------------------------------"
+echo "TURN ON CHANGE DATA CAPTURE "
+echo "----------------------------------------------------------------------"
+cockroach sql --url $URL --execute 'SET CLUSTER SETTING kv.rangefeed.enabled = true;'
 
 echo "----------------------------------------------------------------------"
 echo "UPDATING DEMO PASSWORD (movr) "
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --execute 'ALTER USER demo with password "movr";'
+
 
 echo "----------------------------------------------------------------------"
 echo "UPDATING CLUSTER TO SUPPORT PLACEMENT RESTRICTED "

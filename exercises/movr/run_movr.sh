@@ -39,7 +39,7 @@ function start_kafka {
 }
 
 function stop_kafka {
-    docker-compose down -d 
+    docker-compose down
 }
 
 function start_services {

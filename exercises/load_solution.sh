@@ -24,6 +24,7 @@ SUB_FOLDERS=(
     "movr/rides/data"
     "movr/vehicles/data"
     "movr/users/data"
+    "movr/pricing/data"
     "movr/cockroach"
 )
 
