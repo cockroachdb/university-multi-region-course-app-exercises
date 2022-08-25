@@ -11,7 +11,7 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties.spring.json.value.default.type: io.roach.movrapi.events.KafkaMessage
   datasource:
-    url: jdbc:postgresql://localhost:26257/movr_vehicles
+    url: jdbc:postgresql://localhost:26263/movr_vehicles
     username: demo
     password: movr
 
