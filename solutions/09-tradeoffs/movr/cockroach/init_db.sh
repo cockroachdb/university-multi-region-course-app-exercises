@@ -24,6 +24,11 @@ echo "$URL"
 echo "----------------------------------------------------------------------"
 
 echo "----------------------------------------------------------------------"
+echo "UPDATING CLUSTER TO SUPPORT PLACEMENT RESTRICTED "
+echo "----------------------------------------------------------------------"
+cockroach sql --url $URL --execute 'SET CLUSTER SETTING sql.defaults.multiregion_placement_policy.enabled = on;'
+
+echo "----------------------------------------------------------------------"
 echo "INITIALIZING RIDES DATABASE: ../rides/data/rides_database.sql"
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --file '../rides/data/rides_database.sql'
@@ -46,3 +51,5 @@ echo "----------------------------------------------------------------------"
 echo "UPDATING DEMO PASSWORD (movr) "
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --execute 'ALTER USER demo with password "movr";'
+
+
