@@ -21,11 +21,11 @@ then
 fi
 
 SUB_FOLDERS=(
+    "movr/cockroach"
     "movr/rides/data"
     "movr/vehicles/data"
     "movr/users/data"
     "movr/pricing/data"
-    "movr/cockroach"
 )
 
 SOLUTION_FOLDER=../solutions
