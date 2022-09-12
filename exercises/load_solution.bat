@@ -11,7 +11,7 @@ if [%EXERCISE%]==[] (
     echo WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR CODE. MAKE SURE YOU ACTUALLY WANT TO DO THAT.
 )
 
-set SUB_FOLDERS=movr\rides\data movr\vehicles\data movr\users\data movr\cockroach
+set SUB_FOLDERS=movr\rides\data movr\vehicles\data movr\users\data movr\cockroach movr\pricing\data
 
 set SOLUTION_FOLDER=..\solutions
 
