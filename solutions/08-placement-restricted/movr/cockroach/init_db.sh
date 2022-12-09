@@ -29,6 +29,11 @@ echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --execute 'SET CLUSTER SETTING sql.defaults.multiregion_placement_policy.enabled = on;'
 
 echo "----------------------------------------------------------------------"
+echo "ENABLE SUPER REGIONS"
+echo "----------------------------------------------------------------------"
+cockroach sql --url $URL --execute 'SET CLUSTER SETTING  sql.defaults.super_regions.enabled = true;'
+
+echo "----------------------------------------------------------------------"
 echo "INITIALIZING RIDES DATABASE: ../rides/data/rides_database.sql"
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --file '../rides/data/rides_database.sql'
@@ -42,6 +47,7 @@ echo "----------------------------------------------------------------------"
 echo "INITIALIZING USERS DATABASE: ../users/data/users_database.sql"
 echo "----------------------------------------------------------------------"
 cockroach sql --url $URL --file '../users/data/users_database.sql'
+
 echo "----------------------------------------------------------------------"
 echo "TURN ON CHANGE DATA CAPTURE "
 echo "----------------------------------------------------------------------"

@@ -12,4 +12,11 @@ CREATE TABLE movr_pricing.promo_codes (
     rules JSONB NOT NULL
 );
 
+CREATE TABLE movr_pricing.vip_rates (
+    rate_code STRING PRIMARY KEY,
+    market STRING NOT NULL,
+    description STRING NOT NULL, 
+    creation_time TIMESTAMP NOT NULL 
+);
+
 ALTER TABLE movr_pricing.promo_codes SET locality GLOBAL;
