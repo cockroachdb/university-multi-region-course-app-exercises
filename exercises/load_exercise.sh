@@ -44,7 +44,7 @@ do
     SETUP=$EXERCISE_FOLDER/$folder
     EXERCISE=./$folder
     
-    echo "Loading Tests from $SETUP to $EXERCISE"
+    echo "Loading setup files from $SETUP to $EXERCISE"
 
     if [ ! -d $SETUP ]
     then

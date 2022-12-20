@@ -31,7 +31,7 @@ for %%f in (%SUB_FOLDERS%) do (
     set SETUP=!EXERCISE_FOLDER!\%%f
     set EXERCISE=%%f
 
-    echo Loading Tests from !SETUP! to !EXERCISE!
+    echo Loading setup files from !SETUP! to !EXERCISE!
 
     if not exist !SETUP!\ (
       echo WARNING: Unable to find tests for in the requested folder: !SETUP!...skipping
