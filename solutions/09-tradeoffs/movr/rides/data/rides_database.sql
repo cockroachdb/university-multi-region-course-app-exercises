@@ -18,5 +18,6 @@ CREATE TABLE movr_rides.events (
 ALTER DATABASE movr_rides SET PRIMARY REGION "us-east";
 ALTER DATABASE movr_rides ADD REGION "us-central";
 ALTER DATABASE movr_rides ADD REGION "us-west";
+ALTER DATABASE movr_rides ADD REGION "eu-west";
 
 ALTER DATABASE movr_rides SURVIVE REGION FAILURE;

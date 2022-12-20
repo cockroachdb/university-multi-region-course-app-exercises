@@ -6,19 +6,19 @@ setlocal enabledelayedexpansion
 set EXERCISE=%1
 
 if [%EXERCISE%]==[] (
-  echo This command will copy the provided tests into your exercises directory.
+  echo This command will copy the provided setup files into your exercises directory.
   echo USAGE: load_exercise.bat search string
   echo search string   A string that makes up all, or part, of the exercise name. Exercise numbers eg. 01 are the simplest form of search.
-  echo WARNING:        RUNNING THIS COMMAND WILL OVERWRITE YOUR TESTS. IF YOU HAVE MADE CHANGES TO THE TESTS, YOU WILL LOSE THEM.
+  echo WARNING:        RUNNING THIS COMMAND WILL OVERWRITE YOUR SQL FILES. IF YOU HAVE MADE CHANGES TO THE FILES, YOU WILL LOSE THEM.
   rem exit /B 0
 )
 
 set SUB_FOLDERS=movr\cockroach
 
-set SOLUTION_FOLDER=..\solutions
+set SETUP_FOLDER=..\solutions
 
-for /f %%i in ('dir %SOLUTION_FOLDER%\* /b ^| findstr %EXERCISE%') do (
-    set EXERCISE_FOLDER=%SOLUTION_FOLDER%\%%i
+for /f %%i in ('dir %SETUP_FOLDER%\* /b ^| findstr %EXERCISE%') do (
+    set EXERCISE_FOLDER=%SETUP_FOLDER%\%%i
 )
 
 if [!EXERCISE_FOLDER!]==[] (
@@ -28,16 +28,16 @@ if [!EXERCISE_FOLDER!]==[] (
 )
 
 for %%f in (%SUB_FOLDERS%) do (
-    set SOLUTION=!EXERCISE_FOLDER!\%%f
+    set SETUP=!EXERCISE_FOLDER!\%%f
     set EXERCISE=%%f
 
-    echo Loading Tests from !SOLUTION! to !EXERCISE!
+    echo Loading Tests from !SETUP! to !EXERCISE!
 
-    if not exist !SOLUTION!\ (
-      echo WARNING: Unable to find tests for in the requested folder: !SOLUTION!...skipping
+    if not exist !SETUP!\ (
+      echo WARNING: Unable to find tests for in the requested folder: !SETUP!...skipping
     )
 
     rmdir /s/q !EXERCISE!
     if not exist !EXERCISE! mkdir !EXERCISE!
-    xcopy /s/q !SOLUTION!\* !EXERCISE!\ 1>NUL
+    xcopy /s/q !SETUP!\* !EXERCISE!\ 1>NUL
 )

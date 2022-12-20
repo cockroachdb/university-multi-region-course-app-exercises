@@ -4,12 +4,12 @@ set -euo pipefail
 IFS=$'\n\t'
 
 function help {
-    echo "This command will copy the provided tests into your exercises directory."
+    echo "This command will copy the provided setup files into your exercises directory."
     echo ""
     echo "USAGE: load_exercise.sh <search string>"
     echo ""
     echo "<search string>   A string that makes up all, or part, of the exercise name. Exercise numbers (eg. 01) are the simplest form of search."
-    echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR TESTS. IF YOU HAVE MADE CHANGES TO THE TESTS, YOU WILL LOSE THEM."
+    echo "WARNING:          RUNNING THIS COMMAND WILL OVERWRITE YOUR SQL FILES. YOU WILL LOSE ANY CHANGES YOU HAVE MADE CHANGES TO THE FILES."
 }
 
 EXERCISE=${1:-}
@@ -22,32 +22,36 @@ fi
 
 SUB_FOLDERS=(
     "movr/cockroach"
+    "movr/rides/data"
+    "movr/vehicles/data"
+    "movr/users/data"
+    "movr/pricing/data"
 )
 
-SOLUTION_FOLDER=../solutions
+SETUP_FOLDER=../setup
 
-EXERCISE_FOLDER=$(find $SOLUTION_FOLDER -maxdepth 1 -type d -name "*$EXERCISE*" -print -quit)
+EXERCISE_FOLDER=$(find $SETUP_FOLDER -maxdepth 1 -type d -name "*$EXERCISE*" -print -quit)
 
 if [ -z $EXERCISE_FOLDER ]
 then
-    echo "Unable to find a solution for the requested exercise: $EXERCISE"
+    echo "Unable to find a setup folder for the requested exercise: $EXERCISE"
     help
     exit 0
 fi
 
 for folder in ${SUB_FOLDERS[@]};
 do
-    SOLUTION=$EXERCISE_FOLDER/$folder
+    SETUP=$EXERCISE_FOLDER/$folder
     EXERCISE=./$folder
     
-    echo "Loading Tests from $SOLUTION to $EXERCISE"
+    echo "Loading Tests from $SETUP to $EXERCISE"
 
-    if [ ! -d $SOLUTION ]
+    if [ ! -d $SETUP ]
     then
-        echo "WARNING: Unable to find tests for in the requested folder: $SOLUTION...skipping"
+        echo "WARNING: Unable to find setup files in the requested folder: $SETUP...skipping"
     fi
   
     rm -rf $EXERCISE
-    mkdir $EXERCISE
-    cp -rp $SOLUTION/* $EXERCISE
+    mkdir -p $EXERCISE
+    cp -rp $SETUP/* $EXERCISE
 done
