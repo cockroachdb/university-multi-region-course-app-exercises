@@ -20,3 +20,4 @@ CREATE TABLE movr_pricing.vip_rates (
 );
 
 ALTER TABLE movr_pricing.promo_codes SET locality GLOBAL;
+ALTER TABLE movr_pricing.vip_rates SET LOCALITY REGIONAL BY TABLE IN "us-west";
