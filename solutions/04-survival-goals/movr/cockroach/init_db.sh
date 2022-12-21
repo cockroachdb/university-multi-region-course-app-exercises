@@ -45,4 +45,4 @@ cockroach sql --url $URL --execute 'SET CLUSTER SETTING kv.rangefeed.enabled = t
 echo "----------------------------------------------------------------------"
 echo "UPDATING DEMO PASSWORD (movr) "
 echo "----------------------------------------------------------------------"
-cockroach sql --url $URL --execute 'ALTER USER demo with password "movr";'
+cockroach sql --url $URL --execute $'ALTER USER demo with password \'movr\';'
