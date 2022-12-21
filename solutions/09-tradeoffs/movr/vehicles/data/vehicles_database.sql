@@ -36,5 +36,6 @@ INSERT INTO movr_vehicles.location_history (id, vehicle_id, ts, longitude, latit
 ALTER DATABASE movr_vehicles SET PRIMARY REGION "us-east";
 ALTER DATABASE movr_vehicles ADD REGION "us-central";
 ALTER DATABASE movr_vehicles ADD REGION "us-west";
+ALTER DATABASE movr_vehicles ADD REGION "eu-west";
 
 ALTER DATABASE movr_vehicles SURVIVE REGION FAILURE;
