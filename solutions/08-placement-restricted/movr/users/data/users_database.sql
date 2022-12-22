@@ -13,4 +13,6 @@ ALTER DATABASE movr_users ADD REGION "us-central";
 ALTER DATABASE movr_users ADD REGION "us-west";
 ALTER DATABASE movr_users ADD REGION "eu-west";
 
+ALTER TABLE movr_users.users SET LOCALITY REGIONAL BY ROW;
+
 ALTER DATABASE movr_users PLACEMENT RESTRICTED;
