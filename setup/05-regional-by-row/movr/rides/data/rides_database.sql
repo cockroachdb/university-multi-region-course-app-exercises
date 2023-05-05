@@ -13,3 +13,9 @@ CREATE TABLE movr_rides.events (
     event_type STRING NOT NULL,
     event_data JSON NOT NULL
 );
+
+ALTER DATABASE movr_rides SET PRIMARY REGION "us-east";
+ALTER DATABASE movr_rides ADD REGION "us-central";
+ALTER DATABASE movr_rides ADD REGION "us-west";
+
+ALTER DATABASE movr_rides SURVIVE REGION FAILURE;
