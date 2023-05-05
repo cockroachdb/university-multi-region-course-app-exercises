@@ -9,7 +9,8 @@ CREATE TABLE movr_rides.rides (
 );
 
 CREATE TABLE movr_rides.events (
-    id UUID NOT NULL DEFAULT gen_random_uuid(),ts TIMESTAMP DEFAULT now() NOT NULL,
+    id UUID NOT NULL DEFAULT gen_random_uuid(),
+	ts TIMESTAMP DEFAULT now() NOT NULL,
     event_type STRING NOT NULL,
     event_data JSON NOT NULL
 );

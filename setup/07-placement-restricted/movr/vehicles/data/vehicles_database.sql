@@ -1,7 +1,7 @@
 CREATE DATABASE movr_vehicles;
 
 CREATE TABLE movr_vehicles.vehicles (
-    id UUID NOT NULL DEFAULT gen_random_uuid(),battery INT8 NULL,
+    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),battery INT8 NULL,
     last_ride_start TIMESTAMP NULL,
     last_ride_end TIMESTAMP NULL,
     vehicle_info JSON NULL,
