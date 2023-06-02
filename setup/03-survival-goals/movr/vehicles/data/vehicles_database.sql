@@ -12,7 +12,8 @@ CREATE TABLE movr_vehicles.vehicles (
 );
 
 CREATE TABLE movr_vehicles.location_history(
-    id UUID NOT NULL DEFAULT gen_random_uuid(),vehicle_id UUID REFERENCES movr_vehicles.vehicles(id) ON DELETE CASCADE,
+    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+    vehicle_id UUID REFERENCES movr_vehicles.vehicles(id) ON DELETE CASCADE,
     ts TIMESTAMP NOT NULL,
     longitude FLOAT8 NOT NULL,
     latitude FLOAT8 NOT NULL
