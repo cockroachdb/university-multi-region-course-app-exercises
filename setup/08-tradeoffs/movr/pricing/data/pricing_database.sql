@@ -6,7 +6,7 @@ ALTER DATABASE movr_pricing ADD REGION "us-west";
 ALTER DATABASE movr_pricing ADD REGION "eu-west";
 
 CREATE TABLE movr_pricing.promo_codes (
-    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     code STRING NOT NULL,
     description STRING NOT NULL, 
     creation_time TIMESTAMP NOT NULL, 
@@ -15,7 +15,7 @@ CREATE TABLE movr_pricing.promo_codes (
 );
 
 CREATE TABLE movr_pricing.vip_rates (
-    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     rate_code STRING NOT NULL,
     market STRING NOT NULL,
     description STRING NOT NULL, 

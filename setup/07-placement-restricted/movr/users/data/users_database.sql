@@ -1,7 +1,7 @@
 CREATE DATABASE movr_users;
 
 CREATE TABLE movr_users.users (
-	id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 	email STRING NOT NULL,
 	city STRING NULL,
 	last_name STRING NOT NULL,
